@@ -114,7 +114,6 @@ def gban(bot: Bot, update: Update, args: List[str]):
     message.reply_text(f"Okay!\nOne gban coming right up for {user_chat.first_name}.")
 
     start_time = time.time()
-
     datetime_fmt = "%H:%M - %d-%m-%Y"
     current_time = datetime.utcnow().strftime(datetime_fmt)
 
@@ -226,7 +225,6 @@ def ungban(bot: Bot, update: Update, args: List[str]):
     message.reply_text(f"I'll give {user_chat.first_name} a second chance, globally.")
 
     start_time = time.time()
-
     datetime_fmt = "%H:%M - %d-%m-%Y"
     current_time = datetime.utcnow().strftime(datetime_fmt)
 
@@ -320,6 +318,7 @@ def gbanlist(bot: Bot, update: Update):
 
 
 def check_and_ban(update, user_id, should_message=True):
+    
     if sql.is_user_gbanned(user_id):
         update.effective_chat.kick_member(user_id)
         if should_message:

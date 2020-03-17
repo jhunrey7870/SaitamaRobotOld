@@ -9,7 +9,6 @@ class CleanerBlueTextChatSettings(BASE):
     __tablename__ = "cleaner_bluetext_chat_setting"
     chat_id = Column(UnicodeText, primary_key=True)
     is_enable = Column(Boolean, default=False)
-
     def __init__(self, chat_id, is_enable):
         self.chat_id = chat_id
         self.is_enable = is_enable
@@ -17,12 +16,10 @@ class CleanerBlueTextChatSettings(BASE):
     def __repr__(self):
         return "clean blue text for {}".format(self.chat_id)
 
-
 class CleanerBlueTextChat(BASE):
     __tablename__ = "cleaner_bluetext_chat_ignore_commands"
     chat_id = Column(UnicodeText, primary_key=True)
     command = Column(UnicodeText, primary_key=True)
-
     def __init__(self, chat_id, command):
         self.chat_id = chat_id
         self.command = command
@@ -82,7 +79,6 @@ def chat_ignore_command(chat_id, ignore):
             SESSION.add(ignored)
             SESSION.commit()
             return True
-
         SESSION.close()
         return False
 
@@ -96,7 +92,6 @@ def chat_unignore_command(chat_id, unignore):
 
             if str(chat_id) not in CLEANER_CHATS:
                 CLEANER_CHATS.setdefault(str(chat_id), {"setting": False, "commands": set()})
-
             if unignore in CLEANER_CHATS.get(str(chat_id)).get("commands"):
                 CLEANER_CHATS[str(chat_id)]["commands"].remove(unignore)
 

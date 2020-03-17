@@ -39,7 +39,6 @@ def slap(bot: Bot, update: Update, args: List[str]):
 
                 mutetime = int(time.time() + 60)
                 bot.restrict_chat_member(chat.id, message.from_user.id, until_date=mutetime, can_send_messages=False)
-
             reply_text(temp[0])
         else:
             reply_text(temp)
@@ -49,7 +48,6 @@ def slap(bot: Bot, update: Update, args: List[str]):
 
         slapped_user = bot.get_chat(user_id)
         user1 = curr_user
-
         user2 = html.escape(slapped_user.first_name)
 
     else:
@@ -107,7 +105,6 @@ def rlg(bot: Bot, update: Update):
         repl = ears[0] + eyes[0] + mouth[0] + eyes[1] + ears[1]
     else:
         repl = ears[0] + eyes[0] + mouth[0] + eyes[0] + ears[1]
-
     update.message.reply_text(repl)
 
 
@@ -115,7 +112,6 @@ def rlg(bot: Bot, update: Update):
 def decide(bot: Bot, update: Update):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.DECIDE))
-
 
 @run_async
 def table(bot: Bot, update: Update):

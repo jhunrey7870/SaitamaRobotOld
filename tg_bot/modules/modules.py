@@ -30,7 +30,6 @@ def load(bot: Bot, update: Update):
     else:
         load_messasge.edit_text("Module already loaded.")
         return
-
     if "__handlers__" in dir(imported_module):
         handlers = imported_module.__handlers__
         for handler in handlers:
@@ -87,13 +86,11 @@ def unload(bot: Bot, update: Update):
 
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
-
     if imported_module.__mod_name__.lower() in IMPORTED:
         IMPORTED.pop(imported_module.__mod_name__.lower())
     else:
         unload_messasge.edit_text("Can't unload something that isn't loaded.")
         return
-
     if "__handlers__" in dir(imported_module):
         handlers = imported_module.__handlers__
         for handler in handlers:

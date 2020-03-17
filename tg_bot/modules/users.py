@@ -6,6 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
 
 import tg_bot.modules.sql.users_sql as sql
+
 from tg_bot import dispatcher, OWNER_ID, LOGGER, DEV_USERS
 from tg_bot.modules.helper_funcs.chat_status import sudo_plus, dev_plus
 
@@ -48,6 +49,7 @@ def get_user_id(username):
 @run_async
 @dev_plus
 def broadcast(bot: Bot, update: Update):
+
     to_send = update.effective_message.text.split(None, 1)
 
     if len(to_send) >= 2:
@@ -89,6 +91,7 @@ def log_user(bot: Bot, update: Update):
 @run_async
 @sudo_plus
 def chats(bot: Bot, update: Update):
+
     all_chats = sql.get_all_chats() or []
     chatfile = 'List of chats.\n'
     for chat in all_chats:

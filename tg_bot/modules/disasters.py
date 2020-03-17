@@ -1,5 +1,6 @@
 import html
 import json
+import html
 import os
 from typing import List, Optional
 
@@ -24,7 +25,6 @@ def check_user_id(user_id: int, bot: Bot) -> Optional[str]:
 
     else:
         reply = None
-
     return reply
 
 
